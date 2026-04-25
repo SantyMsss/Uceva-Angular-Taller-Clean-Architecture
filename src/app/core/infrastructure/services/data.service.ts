@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { faker } from '@faker-js/faker';
 import { Observable, of } from "rxjs";
 import { environment } from "../../../../environments/environment";
+import { Order, OrderStatus } from "../../domain/models/order.model";
 import { Product, ProductCategory } from "../../domain/models/product.model";
 import { User, UserEngineering } from "../../domain/models/user.model";
 
@@ -197,6 +198,27 @@ export class DataService {
      */
     getAllProductsSpringBoot(countProducts: number): Observable<Product[]> {
         return this.httpClient.get<Product[]>(`${this.springBootUrl}/products/${countProducts}`);
+    }
+
+    /**
+     * Obtiene el listado de pedidos desde el backend Node.js.
+     *
+     * @remarks
+     * Realiza una petición HTTP GET al endpoint
+     * `/orders/{countOrders}`.
+     *
+     * @param countOrders - Cantidad de pedidos a solicitar
+     * @returns Observable que emite un arreglo de {@link Order}
+     *
+     * @example
+     * ```ts
+     * this.dataService.getAllOrdersNode(10).subscribe(orders => {
+     *   console.log(orders);
+     * });
+     * ```
+     */
+    getAllOrdersNode(countOrders: number): Observable<Order[]> {
+        return this.httpClient.get<Order[]>(`${this.nodeUrl}/orders/${countOrders}`);
     }
 
 }
