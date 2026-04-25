@@ -221,4 +221,25 @@ export class DataService {
         return this.httpClient.get<Order[]>(`${this.nodeUrl}/orders/${countOrders}`);
     }
 
+    /**
+     * Obtiene el listado de pedidos desde el backend SpringBoot.
+     *
+     * @remarks
+     * Realiza una petición HTTP GET al endpoint
+     * `/orders/{countOrders}`.
+     *
+     * @param countOrders - Cantidad de pedidos a solicitar
+     * @returns Observable que emite un arreglo de {@link Order}
+     *
+     * @example
+     * ```ts
+     * this.dataService.getAllOrdersSpringBoot(10).subscribe(orders => {
+     *   console.log(orders);
+     * });
+     * ```
+     */
+    getAllOrdersSpringBoot(countOrders: number): Observable<Order[]> {
+        return this.httpClient.get<Order[]>(`${this.springBootUrl}/orders/${countOrders}`);
+    }
+
 }

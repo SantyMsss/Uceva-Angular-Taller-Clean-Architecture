@@ -10,6 +10,7 @@ import { UserNodeRepositoryImpl } from './core/infrastructure/repositories/node-
 import { OrderNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/order-node.repository.impl';
 import { UserSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/user-springboot.repository.impl';
 import { ProductSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/product-springboot.repository.impl';
+import { OrderSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/order-springboot.repository.impl';
 import { UserLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/user-local.repository.impl';
 import { ProductLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/product-local.repository.impl';
 
@@ -45,13 +46,14 @@ export const appConfig: ApplicationConfig = {
     // { provide: ProductRepository, useClass: ProductLocalRepositoryImpl },
     
     //Node Providers
-    { provide: UserRepository, useClass: UserNodeRepositoryImpl },
-    { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
-    { provide: OrderRepository, useClass: OrderNodeRepositoryImpl },
+    // { provide: UserRepository, useClass: UserNodeRepositoryImpl },
+    // { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
+    // { provide: OrderRepository, useClass: OrderNodeRepositoryImpl },
 
     //SpringBoot Providers
-    //{ provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
-    //{ provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
+    { provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
+    { provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
+    { provide: OrderRepository, useClass: OrderSpringBootRepositoryImpl },
 
     /**
      * Proveedor de listeners globales de errores del navegador.
