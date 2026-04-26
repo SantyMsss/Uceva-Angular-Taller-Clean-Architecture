@@ -5,14 +5,18 @@ import { routes } from './app.routes';
 import { ProductRepository } from './core/domain/repositories/product.repository';
 import { UserRepository } from './core/domain/repositories/user.repository';
 import { OrderRepository } from './core/domain/repositories/order.repository';
+import { InventoryRepository } from './core/domain/repositories/inventory.repository';
 import { ProductNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/product-node.repository.impl';
 import { UserNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/user-node.repository.impl';
 import { OrderNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/order-node.repository.impl';
+import { InventoryNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/inventory-node.repository.impl';
 import { UserSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/user-springboot.repository.impl';
 import { ProductSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/product-springboot.repository.impl';
 import { OrderSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/order-springboot.repository.impl';
+import { InventorySpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/inventory-springboot.repository.impl';
 import { UserLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/user-local.repository.impl';
 import { ProductLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/product-local.repository.impl';
+import { InventoryLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/inventory-local.repository.impl';
 
 /**
  * Configuración principal de la aplicación Angular.
@@ -44,16 +48,19 @@ export const appConfig: ApplicationConfig = {
     //Local Providers
     // { provide: UserRepository, useClass: UserLocalRepositoryImpl },
     // { provide: ProductRepository, useClass: ProductLocalRepositoryImpl },
-    
+    // { provide: InventoryRepository, useClass: InventoryLocalRepositoryImpl },
+
     //Node Providers
     // { provide: UserRepository, useClass: UserNodeRepositoryImpl },
     // { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
     // { provide: OrderRepository, useClass: OrderNodeRepositoryImpl },
+    // { provide: InventoryRepository, useClass: InventoryNodeRepositoryImpl },
 
     //SpringBoot Providers
     { provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
     { provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
     { provide: OrderRepository, useClass: OrderSpringBootRepositoryImpl },
+    { provide: InventoryRepository, useClass: InventorySpringBootRepositoryImpl },
 
     /**
      * Proveedor de listeners globales de errores del navegador.
