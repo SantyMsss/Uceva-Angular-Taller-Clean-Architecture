@@ -3,6 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   coverageReporters: ["html", "json", "lcov", "text", "clover"],
   
+  transformIgnorePatterns: ['node_modules/(?!(.*\\.mjs$|@angular/common/locales/.*\\.js$|@faker-js/faker))'],
   modulePathIgnorePatterns: ["<rootDir>/dist/"],
   testPathIgnorePatterns: [
     "<rootDir>/node_modules/",
