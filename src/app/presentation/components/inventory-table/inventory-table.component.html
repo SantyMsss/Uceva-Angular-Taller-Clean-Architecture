@@ -1,0 +1,27 @@
+<table class="table table-striped border">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Producto</th>
+			<th scope="col">Cantidad</th>
+			<th scope="col">Movimiento</th>
+			<th scope="col">Última Actualización</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (inventory of inventories; track inventory) {
+			<tr>
+				<th scope="row">{{ inventory.id }}</th>
+				<td>{{ inventory.productName }}</td>
+				<td>{{ inventory.quantity }}</td>
+				<td>
+					<dsb-badge-atom
+						[text]="inventory.movements"
+						[type]="movementMap[inventory.movements]">
+					</dsb-badge-atom>
+				</td>
+				<td>{{ inventory.lastUpdated | date:'short' }}</td>
+			</tr>
+		}
+	</tbody>
+</table>

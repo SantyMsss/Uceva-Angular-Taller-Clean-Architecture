@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
     // { provide: UserRepository, useClass: UserNodeRepositoryImpl },
     // { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
     // { provide: OrderRepository, useClass: OrderNodeRepositoryImpl },
-    // { provide: InventoryRepository, useClass: InventoryNodeRepositoryImpl },
+    //{ provide: InventoryRepository, useClass: InventoryNodeRepositoryImpl },
 
     //SpringBoot Providers
     { provide: UserRepository, useClass: UserSpringBootRepositoryImpl },

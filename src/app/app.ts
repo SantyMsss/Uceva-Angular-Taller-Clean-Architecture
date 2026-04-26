@@ -59,7 +59,7 @@ export class App {
       { text: 'Usuarios', url: '/users' },
       { text: 'Productos', url: '/products' },
       { text: 'Pedidos', url: '/orders' },
-      { text: 'Inventarios', url: '/inventorys' },
+      { text: 'Inventarios', url: '/inventory' },
     ]
   };
 }

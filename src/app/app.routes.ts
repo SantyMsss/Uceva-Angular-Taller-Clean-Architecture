@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { UsersPage } from './presentation/pages/users/users.page';
 import { ProductsPage } from './presentation/pages/products/products.page';
 import { OrdersPage } from './presentation/pages/orders/orders.page';
+import { InventoryPage } from './presentation/pages/inventory/inventory.page';
 
 /**
  * Definición de las rutas principales de la aplicación.
@@ -54,5 +55,7 @@ export const routes: Routes = [
    * Captura cualquier ruta no definida y redirige
    * automáticamente a la ruta de usuarios.
    */
+  { path: 'inventory', component: InventoryPage },
+
   { path: '**', redirectTo: 'users' },
 ];
