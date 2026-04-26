@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { faker } from '@faker-js/faker';
 import { Observable, of } from "rxjs";
 import { environment } from "../../../../environments/environment";
+import { Inventory, InventoryMovement } from "../../domain/models/inventory.model";
 import { Order, OrderStatus } from "../../domain/models/order.model";
 import { Product, ProductCategory } from "../../domain/models/product.model";
 import { User, UserEngineering } from "../../domain/models/user.model";
@@ -240,6 +241,50 @@ export class DataService {
      */
     getAllOrdersSpringBoot(countOrders: number): Observable<Order[]> {
         return this.httpClient.get<Order[]>(`${this.springBootUrl}/orders/${countOrders}`);
+    }
+
+    /**
+     * Obtiene el listado de inventarios desde datos locales simulados.
+     *
+     * @param countInventories - Cantidad de inventarios a solicitar
+     * @returns Observable que emite un arreglo de {@link Inventory}
+     */
+    getAllInventoryLocal(countInventories: number): Observable<Inventory[]> {
+        const inventories: Inventory[] = [];
+        const movements: InventoryMovement[] = ['entrada', 'salida', 'ajuste'];
+
+        for (let i = 1; i <= countInventories; i++) {
+            inventories.push({
+                id: i,
+                productId: faker.number.int({ min: 1, max: 100 }),
+                productName: faker.commerce.productName(),
+                quantity: faker.number.int({ min: 0, max: 500 }),
+                movements: faker.helpers.arrayElement(movements),
+                lastUpdated: faker.date.recent({ days: 30 }),
+            });
+        }
+
+        return of(inventories);
+    }
+
+    /**
+     * Obtiene el listado de inventarios desde el backend Node.js.
+     *
+     * @param countInventories - Cantidad de inventarios a solicitar
+     * @returns Observable que emite un arreglo de {@link Inventory}
+     */
+    getAllInventoryNode(countInventories: number): Observable<Inventory[]> {
+        return this.httpClient.get<Inventory[]>(`${this.nodeUrl}/inventory/${countInventories}`);
+    }
+
+    /**
+     * Obtiene el listado de inventarios desde el backend SpringBoot.
+     *
+     * @param countInventories - Cantidad de inventarios a solicitar
+     * @returns Observable que emite un arreglo de {@link Inventory}
+     */
+    getAllInventorySpringBoot(countInventories: number): Observable<Inventory[]> {
+        return this.httpClient.get<Inventory[]>(`${this.springBootUrl}/inventory/${countInventories}`);
     }
 
 }
